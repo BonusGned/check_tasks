@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/acc-styles.css' %}">
+    <title>Document</title>
+</head>
+<body>
+<header class="header">
+    <div class="wrap">
+        <img src="{% static 'logo/Logo.svg' %}">
+        <a class="exit" href="{% url 'logout' %}">Выйти</a>
+    </div>
+</header>
+<main class="main">
+    <div class="wrap">
+        <h1>Результаты {{ student.username }} </h1>
+        <h2>Помните, что за каждую попытку, с вас снимается 0.25 балла. За ответы в свободной форме, данные могут
+            обновиться в течении 1 недели.</h2>
+
+        <table class="result-table">
+            <thead>
+            <tr>
+                {% for task in tasks %}
+                <th>Урок {{ task.task.order_number }}</th>
+                {% endfor %}
+                <th>Итого</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                {% for task in tasks %}
+                <td>{{ task.appraisal }}</td>
+                {% endfor %}
+                <td>{{ student.total_appraisal }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</main>
+
+</body>
+</html>

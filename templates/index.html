@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+<div class="wrap">
+    <article class="main">
+        <h1>Проверка домашнего задания</h1>
+        <h2>Помните, что за каждую попытку, с вас снимается 0.25 балла. За ответы в свободной форме, данные могут
+            обновиться в течении 1 недели.</h2>
+    </article>
+    <form class="mail-form" action="{% url 'email_user' %}" method="get">
+        <input name="email" type="email" placeholder="Ваш  Email">
+        <input type="submit" value="Смотреть">
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+*{
+    box-sizing: border-box;
+    margin:0 auto;
+}
+
+.header{
+background-size: 100%;
+background-color: #ffffff;
+filter: drop-shadow(0px 1px 10px rgba(18, 87, 91, 0.25));
+margin:0 auto;
+height: 110px;
+}
+
+.wrap{
+position: relative;
+margin: 0 auto;
+max-width:1140px;
+height:100%;
+}
+
+.header img {
+position: absolute;
+width: 50px;
+height: 50px;
+left: 25px;
+top: 30px;
+   
+}
+
+.header a{
+position: absolute;
+height: 17px;
+top:45px;
+left:1100px;
+cursor: pointer;
+
+
+font-family: 'Roboto',sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+/* identical to box height */
+
+letter-spacing: -0.5px;
+
+color: #9DAFBD;    
+}
+
+.main h1{
+position: absolute;
+height: 64px;
+width:1140px;
+margin-top:50px;
+margin-bottom:0px;
+
+font-family: 'Roboto',sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 54px;
+line-height: 63px;
+/* identical to box height */
+
+text-align: center;
+letter-spacing: -1px;
+
+color: #026FC2;
+}
+
+.main h2{
+position: absolute;
+width:555px;
+height: 78px;
+margin-left: 293px;
+margin-top:125px;
+margin-bottom:0px;
+
+font-family: 'Roboto',sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 26px;
+
+text-align: center;
+letter-spacing: -0.5px;
+
+color: #9DAFBD;
+}
+
+.result-table {
+    position: absolute;
+	width: 1140px;
+	bottom: 20px;
+    top:250px;
+	border-collapse: collapse; 
+}
+.result-table th {
+	font-weight: bold;
+    height: 61px;
+	padding: 5px;
+	background: #ffffff;
+	border: 1px solid #dddddd;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    /* identical to box height */
+    
+    text-align: center;
+    
+    color: #9DAFBD;    
+}
+.result-table td {
+	border: 1px solid #dddddd;
+	padding: 5px;
+    height: 62px;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    /* identical to box height */
+    
+    text-align: center;
+    
+    color: #9DAFBD;
+}
+.result-table tr td:first-child, .result-table tr th:first-child {
+	border-left: none;
+}   
+.result-table tr td:last-child, .result-table tr th:last-child {
+	border-right: none;
+}

@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -8,7 +12,21 @@
 <div class="container-form">
     <div>
         <h1 class="text-title">Проверка домашнего задания</h1>
+        <p class="text-body">Помните, что за каждую попытку, с вас снимается 0.25 балла. За ответы в свободной форме,
+            данные могут обновиться в течении 1 недели.</p>
+        {% csrf_token %}
+        <div class="box">
+            <form class="form-inline">
+                <div class="form-group mx-sm-3 mb-2">
+                    <input type="password" class="form-control" id="inputPassword2" placeholder="Ваш Email">
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
+            </form>
+        </div>
     </div>
+
 </div>
 </body>
 </html>
+
+
