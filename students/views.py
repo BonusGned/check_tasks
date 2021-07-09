@@ -1,5 +1,4 @@
 from django.contrib.auth import login, logout
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
@@ -11,7 +10,6 @@ from students.models import Task, TaskConditional, User, Answer
 
 from students.serializers import UserListSerializer, UserAllSerializer, UserTopSerializer, UserDetailSerializer, \
     LessonDetailSerializer
-from students.tasks import sync_google_sheets
 
 
 class UpdateLesson(APIView):
@@ -133,7 +131,3 @@ def email_user(request):
 def user_logout(request):
     logout(request)
     return redirect('information')
-
-def sync(request):
-    sync_google_sheets()
-    return HttpResponse('Ok')

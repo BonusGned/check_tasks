@@ -2,6 +2,7 @@ from pprint import pprint
 
 import httplib2
 import apiclient.discovery
+from celery import shared_task
 from oauth2client.service_account import ServiceAccountCredentials
 
 # Файл, полученный в Google Developer Console
@@ -20,8 +21,8 @@ httpAuth = credentials.authorize(httplib2.Http())
 service = apiclient.discovery.build('sheets', 'v4', http=httpAuth)
 
 
+@shared_task
 def sync_google_sheets():
-    # for user in User.objects.all():
     data = []
     count = 1
     for user in User.objects.all():
@@ -29,7 +30,6 @@ def sync_google_sheets():
         status_tasks = TaskConditional.objects.filter(user=user).values_list('status_task', flat=True)
         data.extend((user.email, user.username, *user_answers, *status_tasks, user.total_appraisal))
         count += 1
-        print(count)
         values = service.spreadsheets().values().batchUpdate(
             spreadsheetId=spreadsheet_id,
             body={
