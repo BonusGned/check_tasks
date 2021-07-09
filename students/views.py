@@ -1,20 +1,17 @@
-from pyexpat import model
-
 from django.contrib.auth import login, logout
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from rest_framework import generics, filters
-from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.viewsets import ModelViewSet
 
 from students.actions import validators
-from students.models import Task, TaskConditional, User, Answer, Lesson
+from students.models import Task, TaskConditional, User, Answer
 
 from students.serializers import UserListSerializer, UserAllSerializer, UserTopSerializer, UserDetailSerializer, \
     LessonDetailSerializer
+from students.tasks import sync_google_sheets
 
 
 class UpdateLesson(APIView):
@@ -61,13 +58,10 @@ class UserListView(ListAPIView):
         }
         if 'lesson' in params:
             del params['lesson']
-        print(params)
         if 'top' in params:
             del params['top']
-        print(params)
         if 'marksonly' in params:
             del params['marksonly']
-        print(params)
         if self.request.GET.get('top', None):
             queryset = User.objects.filter(**params).order_by('-total_appraisal')[:int(self.request.GET.get('top'))]
         else:
@@ -123,7 +117,7 @@ class LessonDetailView(ListAPIView):
         return queryset
 
 
-def test_view(request):
+def check_view(request):
     return render(request, 'index.html')
 
 
@@ -131,7 +125,7 @@ def email_user(request):
     if request.method == 'GET':
         email = request.GET['email']
         user = User.objects.get(email=email)
-        task_conditional = TaskConditional.objects.filter()
+        task_conditional = TaskConditional.objects.filter(user=user)
         login(request, user)
         return render(request, 'account.html', {'student': user, 'tasks': task_conditional})
 
@@ -139,3 +133,7 @@ def email_user(request):
 def user_logout(request):
     logout(request)
     return redirect('information')
+
+def sync(request):
+    sync_google_sheets()
+    return HttpResponse('Ok')

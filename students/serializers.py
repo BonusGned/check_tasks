@@ -1,15 +1,3 @@
-# from djoser.serializers import UserCreateSerializer
-#
-# from students.models import User
-#
-#
-# class UserRegistrationSerializer(UserCreateSerializer):
-#     def validate(self, attrs):
-#         user = User(**attrs)
-#         return attrs
-#
-#     class Meta(UserCreateSerializer.Meta):
-#         fields = ('email', 'first_name', 'last_name')
 from rest_framework import serializers
 
 from students.models import User
@@ -73,7 +61,9 @@ class LessonDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'lesson_appraisal', 'total_appraisal', 'lesson_pessimizing_factor', 'list_status_task', 'list_user_answer')
+        fields = (
+        'username', 'email', 'lesson_appraisal', 'total_appraisal', 'lesson_pessimizing_factor', 'list_status_task',
+        'list_user_answer')
 
     def get_all_appraisal_by_lessons(self, obj):
         lesson_name = self.context.get('lesson_name')

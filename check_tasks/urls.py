@@ -15,9 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework_simplejwt.views import TokenObtainPairView
-
-from students.views import test_view, user_logout, email_user, UserListView, UserTopListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),

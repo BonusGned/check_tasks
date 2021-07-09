@@ -29,10 +29,6 @@ class User(AbstractUser):
             sum_less, created = TaskConditional.objects.get_or_create(user=self, task=task)
             lesson_appraisal.append(sum_less.appraisal)
         return sum(lesson_appraisal)
-        # return sum(TaskConditional.objects.get_or_create(user=self, task=task).appraisal for task in Lesson.objects.get(title=lesson_name).tasks.all())
-        # tasks = Lesson.objects.get(lesson_name=lesson_id).tasks
-        # return sum([TaskConditional.objects.filter(user=self, task=task).only('appraisal') for task in tasks])
-        # return sum([task.appraisal for task in task_conds])
 
     def get_all_pessimizing_factor_by_lessons(self, lesson_name=None):
         lesson_pessimizing_factor = []

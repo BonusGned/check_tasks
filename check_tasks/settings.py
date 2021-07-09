@@ -131,7 +131,7 @@ REST_FRAMEWORK = {
 DJOSER = {
     'ACTIVATION_URL': '#/activate/{uid}/{token}',
     'SEND_ACTIVATION_EMAIL': False,
-    }
+}
 
 AUTH_USER_MODEL = "students.User"
 
@@ -140,3 +140,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+#CELERY SETTINGS
+CELERY_TIMEZONE = "Australia/Tasmania"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
